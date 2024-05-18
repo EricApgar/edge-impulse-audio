@@ -17,5 +17,6 @@ sudo apt install cmake
 
 ```
 sudo ln -s /usr/lib/arm-linux-gnueabihf/libssl.so.1.1 /usr/lib/arm-linux-gnueabihf/libssl.so.3
+sudo ln -s /usr/lib/arm-linux-gnueabihf/libcrypto.so.1.1 /usr/lib/arm-linux-gnueabihf/libcrypto.so.3
 ```
 
