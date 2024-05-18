@@ -1,4 +1,28 @@
 # edge-impulse-audio
+This project is designed to run on a Raspberry Pi. No other hardware has been tested.
+
+# Hardware Requirements
+Not all models of RPi are able to run this project.
+
+| Hardware | Success | Details |
+|-|-|-|
+| Raspberry Pi Zero 2 W | No | Issues installing system libraries (cmake). |
+| Raspberry Pi 4B (1 GB) | Yes | |
+
+## Installation
+
+Edge impulse requires the portaudio system library.
+```
+sudo apt install portaudio19-dev
+```
+
+### Python
+* Python 3.11.0
+    * Other version may work but not confirmed.
+```
+pip install -r requirements.txt
+```
+
 Instructions for deploying an Edge Impulse Audio model on the Raspberry Pi.
 
 ```
