@@ -1,5 +1,5 @@
 # edge-impulse-audio
-This project is designed to run wakeword detection on a Raspberry Pi using [Edge Impulse](https://edgeimpulse.com/) as a service to collect data and train a voice model. 
+This project is designed to run offline wakeword detection on a Raspberry Pi after using [Edge Impulse](https://edgeimpulse.com/) as a service to collect data and train a voice model. It is capable of handling multiple wakewords.
 
 The actual use (inference) of the deployed wakeword model happens offline. Collecting audio data and training a model requires connecting the device to your Edge Impulse account (free to make, easy to use, well structured with extensive guides and help).
 
