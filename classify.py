@@ -37,6 +37,8 @@ def main(argv):
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     modelfile = os.path.join(dir_path, model)
+    
+    print(f'Model File: {modelfile}, Is a file? {os.path.isfile(modelfile)}')
 
     with AudioImpulseRunner(modelfile) as runner:
         try:
