@@ -3,6 +3,8 @@ import sys, getopt
 import signal
 import time
 from edge_impulse_linux.audio import AudioImpulseRunner
+from control_usb import control_usb_power
+
 
 runner = None
 
@@ -18,6 +20,7 @@ def help():
     print('python classify.py <path_to_model.eim> <audio_device_ID, optional>' )
 
 def main(argv):
+    
     try:
         opts, args = getopt.getopt(argv, "h", ["--help"])
     except getopt.GetoptError:
@@ -57,7 +60,13 @@ def main(argv):
                 for label in labels:
                     score = res['result']['classification'][label]
                     print('%s: %.2f\t' % (label, score), end='')
+                    
                 print('', flush=True)
+                
+                if res['result']['classification']['lumos'] > .70:
+                    control_usb_power(bus='1-1', state='on')
+                elif res['result']['classification']['nox'] > .70:
+                    control_usb_power(bus='1-1', state='off')
 
         finally:
             if (runner):
