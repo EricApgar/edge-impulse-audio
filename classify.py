@@ -63,9 +63,9 @@ def main(argv):
                     
                 print('', flush=True)
                 
-                if res['result']['classification']['lumos'] > .70:
+                if res['result']['classification']['lumos'] > .20:
                     control_usb_power(bus='1-1', state='on')
-                elif res['result']['classification']['nox'] > .70:
+                elif res['result']['classification']['nox'] > .20:
                     control_usb_power(bus='1-1', state='off')
 
         finally:
