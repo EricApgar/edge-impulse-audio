@@ -5,6 +5,12 @@ import time
 from edge_impulse_linux.audio import AudioImpulseRunner
 from control_usb import control_usb_power
 
+import RPi.GPIO as GPIO
+
+
+IR_DETECT_GPIO_PIN = 25
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(IR_DETECT_GPIO_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 runner = None
 
@@ -63,10 +69,11 @@ def main(argv):
                     
                 print('', flush=True)
                 
-                if res['result']['classification']['lumos'] > .20:
-                    control_usb_power(bus='1-1', state='on')
-                elif res['result']['classification']['nox'] > .20:
-                    control_usb_power(bus='1-1', state='off')
+                if GPIO.input(IR_DETECT_GPIO_PIN):  # If IR Light Detected.
+                    if res['result']['classification']['lumos'] > .20:
+                        control_usb_power(bus='1-1', state='on')
+                    elif res['result']['classification']['nox'] > .20:
+                        control_usb_power(bus='1-1', state='off')
 
         finally:
             if (runner):

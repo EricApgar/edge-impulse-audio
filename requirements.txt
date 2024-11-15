@@ -3,4 +3,5 @@ numpy==1.26.4
 opencv-python==4.9.0.80
 psutil==5.9.8
 PyAudio==0.2.14
+RPi.GPIO==0.7.1
 six==1.16.0
